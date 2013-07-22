@@ -54,6 +54,9 @@ a:hover {
 
 pre, code {
 	font-size: 14px;
+	@media screen and (max-width: 600px){
+		font-size: 12px;
+	}
 }
 
 .alignleft{
