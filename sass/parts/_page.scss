@@ -1,0 +1,40 @@
+article.page{
+	table{
+		background: none;
+		border-width: 0px;
+		border-spacing: 0;
+		margin-top: 10px;
+		margin-bottom: 0px;
+		th{
+			background: none;
+		}
+		td{
+		padding: 10px 10px;
+			text-align: center;
+		}
+		tr{
+			background: none;
+			&:nth-of-type(2n){
+					background: none;
+				}
+		}
+	}
+
+	img, video{
+			width: 8.0em;
+			height: auto;
+			-webkit-border-radius:1.5em;
+			-moz-border-radius:1.5em;
+			border-radius:1.5em;
+			-webkit-border-radius:1.5em;
+			-moz-border-radius:1.5em;
+			border-radius:1.5em;
+			-webkit-box-shadow:0 0 15px rgba(0,0,0,0.35);
+			-moz-box-shadow:0 0 15px rgba(0,0,0,0.35);
+			box-shadow:0 0 15px rgba(0,0,0,0.35);
+			border-bottom: 0px;
+			display: block;
+			margin-left: auto;
+    		margin-right: auto
+		}
+}
