@@ -20,7 +20,7 @@ As always when writing code that other people are going to read, you want it to 
 - Split big methods in multiple small methods (a good guideline is ~25 lines max per method)
 - Comment the hell of your header file. (This is the only thing that most people using your code will read)
 
-### Organize the project
+#### Organize the project
 Often you want to share just a few classes but it is a good idea to include a Demo project so that people can understand how your classes are intended to be used.
 
 Have the files of interest in a folder and the files for the demo project in a different one so as not to confuse your user.
