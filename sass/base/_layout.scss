@@ -5,8 +5,9 @@ $max-width: 800px;
 	padding: 0;
 }
 body{
+	-webkit-text-size-adjust: none;
 	font-family: $font-default;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 300;
 	line-height: 1.5;
 	background: $color-background;
@@ -26,18 +27,27 @@ h1{
 h2{
 	font-size: 36px;
 	line-height:1;
-	font-weight:300;
 }
 h3{
-	font-size: 20px;
+	font-size: 24px;
 	line-height: 1.2;
 	margin: 1.2em 0 0 0;
+	display: block;
+	@media screen and (max-width: 620px) {
+	font-size: 18px;
+	}
+}
+h4{
+	font-size: 20px;
+	line-height: 1.2;
+	margin: 0 0 0 0;
 	font-weight: normal;
 	display: block;
 	@media screen and (max-width: 620px) {
 	font-size: 15px;
-		}
 	}
+}
+
 a {
  	text-decoration:none;
 	color:#FF6E7C;
@@ -53,6 +63,7 @@ a:hover {
 }
 
 pre, code {
+	-webkit-text-size-adjust: none;
 	font-size: 14px;
 	@media screen and (max-width: 600px){
 		font-size: 12px;
