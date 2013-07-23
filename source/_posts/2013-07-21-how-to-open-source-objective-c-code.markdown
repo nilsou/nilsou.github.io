@@ -3,7 +3,10 @@ layout: post
 title: "Open source Objective-C code with Github and CocoaPods"
 date: 2013-07-21 16:33
 comments: false
-categories: iOS, Objective-C, Open Source
+categories:
+- iOS
+- Objective-C
+- Open Source
 ---
 
 Last week I decided to open source some classes that I have wrote and that I reuse often in apps so that other developers can benefit from them.
@@ -91,7 +94,7 @@ s.source = { :git => "https://github.com/nilsou/NHAlignmentFlowLayout.git", :tag
 You also need to tell CocoaPods which files in your repo are relevant so that it does not copy any unneeded demo/example file.
 
 ``` ruby
-  s.source_files = 'NHAlignmentFlowLayout/*.{h,m}'
+s.source_files = 'NHAlignmentFlowLayout/*.{h,m}'
 ```
 
 #### Validate the .podspec file
