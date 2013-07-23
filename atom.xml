@@ -4,7 +4,7 @@
   <title><![CDATA[Nils Hayat]]></title>
   <link href="http://nilsou.github.io/atom.xml" rel="self"/>
   <link href="http://nilsou.github.io/"/>
-  <updated>2013-07-22T15:47:34-04:00</updated>
+  <updated>2013-07-23T15:45:57-04:00</updated>
   <id>http://nilsou.github.io/</id>
   <author>
     <name><![CDATA[Nils Hayat]]></name>
@@ -116,7 +116,7 @@ Check the option to add a .gitignore file and choose Objective-C.</p>
 
 <p>You also need to tell CocoaPods which files in your repo are relevant so that it does not copy any unneeded demo/example file.</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">s</span><span class="o">.</span><span class="n">source_files</span> <span class="o">=</span> <span class="s1">&#39;NHAlignmentFlowLayout/*.{h,m}&#39;</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">s</span><span class="o">.</span><span class="n">source_files</span> <span class="o">=</span> <span class="s1">&#39;NHAlignmentFlowLayout/*.{h,m}&#39;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: iOS, | Nils Hayat]]></title>
+  <title><![CDATA[Category: iOS | Nils Hayat]]></title>
   <link href="http://nilsou.github.io/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://nilsou.github.io/"/>
-  <updated>2013-07-22T15:47:34-04:00</updated>
+  <updated>2013-07-23T15:45:57-04:00</updated>
   <id>http://nilsou.github.io/</id>
   <author>
     <name><![CDATA[Nils Hayat]]></name>
@@ -119,7 +119,7 @@ s.source = { :git =&gt; "https://github.com/nilsou/NHAlignmentFlowLayout.git", :
 <p>You also need to tell CocoaPods which files in your repo are relevant so that it does not copy any unneeded demo/example file.</p>
 
 <p><code>ruby
-  s.source_files = 'NHAlignmentFlowLayout/*.{h,m}'
+s.source_files = 'NHAlignmentFlowLayout/*.{h,m}'
 </code></p>
 
 <h4>Validate the .podspec file</h4>
@@ -196,86 +196,6 @@ git push origin master
 <p>Once your pull request is approved you can start using your pod in other projects.</p>
 
 <p>Now, go share your code!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to turn a PNG Sequence into a video with the correct colors for the iPad]]></title>
-    <link href="http://nilsou.github.io/blog/2013/01/10/how-to-turn-a-png-sequence-into-a-video-with-the-correct-colors-for-the-ipad/"/>
-    <updated>2013-01-10T08:33:00-05:00</updated>
-    <id>http://nilsou.github.io/blog/2013/01/10/how-to-turn-a-png-sequence-into-a-video-with-the-correct-colors-for-the-ipad</id>
-    <content type="html"><![CDATA[<p>A few days ago, I was asked to embed videos in an iPad app and to have the video player be &ldquo;invisible&rdquo; to the user. This means that we extracted the part of the background for the view where the video would go and used it as the background for creating the video (in After Effects). Everything looked great and I had a perfectly invisible experience in the simulator.</p>
-
-<p>Then I decided to test on an actual iPad. This is when I realized that the videos looked completely different from the background. I had a color management problem. We tried every export settings we could find in After Effects, nothing would work.</p>
-
-<!-- more -->
-
-
-<p>The solution that I found was to have After Effect export the animation as a PNG Sequence + audio file and then to generate an mp4 video from these assets using ffmpeg.</p>
-
-<p>This post explains the settings I found that worked for me.</p>
-
-<h3>The Basics</h3>
-
-<ol>
-<li>Install the latest version of ffmpeg (you can get it from here <a href="http://ffmpegmac.net/">ffmpegmac</a>)</li>
-<li>the PNG sequence has to be named something like imagexxxxx.png where xxxxx is the frame number with a constant number of digits (00001, 00002, … , 99999)</li>
-<li><p>Open a terminal window and run the following command:</p>
-
-<pre><code> ffmpeg  -f image2
-         -i ./path/to/images/imaged.png \
-         -i ./path/to/audio/audio.mp3 \
-         -r 30 \
-         -vcodec libx264 \
-         -pix_fmt yuv420p \
-         -acodec libvo_aacenc \
-         -ab 128k \
-         ./path/to/output/output.mp4
-</code></pre>
-
-Let me explain the parameters here:
-
-<ul>
-<li><code>-i xxx</code> is to specify the <em>input</em> files (both the image sequence with the  which means &ldquo;number with 5 exactly digits&rdquo; and the audio file)</li>
-<li><code>-r</code> is to specify the frame rate at which ffmpeg is going to interpret the png sequence</li>
-<li><code>-vcodec</code> is the video codec</li>
-<li><code>-pix_fmt yuv420p</code> is required so that the output h264 mp4 file is compatible with Apple implementation of the codec. I fyou don&rsquo;t put this, the video won&rsquo;t play in quicktime or on an iOS device.</li>
-<li><code>-acodec</code> is the audio codec</li>
-<li><code>-ab</code> is the audio bitrate</li>
-<li>finallly you can use <code>-o</code> to specify the output name but it can be omitted (the last parameter is the output name in this case)</li>
-</ul>
-</li>
-</ol>
-
-
-<p>The video created with this method will play on iOS devices and will match the color of images you might have next to it.</p>
-
-<h3>Automate it</h3>
-
-<p>if you have a number of sequences you have to convert, you can use a for loop to let the terminal do all the work for you.</p>
-
-<ol>
-<li>first of all have your png sequences in separate folders named videoY where Y is the video number etc…</li>
-<li>In each folder, have the png named imageX_xxxxx where Y is the video number and xxxxx is the frame number with a constant number of digits (00001, 00002, … , 99999)</li>
-<li>make sure you run bash as your shell (other shells have different syntax for loops)</li>
-<li><p>Run the following command:</p>
-
-<pre><code> for i in 1 2 3 4 5 6 7;
- do
- ffmpeg  -f image2 \
-         -i ./video$i/image${i}_d.png \
-         -i ./video$i/audio.mp3 \
-         -r 30 \
-         -vcodec libx264 \
-         -pix_fmt yuv420p \
-         -acodec libvo_aacenc \
-         -ab 128k \
-         ./video$i/output$i.mp4;
- done
-</code></pre></li>
-<li><p>Grab a beer and watch the magic happen</p></li>
-</ol>
-
 ]]></content>
   </entry>
   
