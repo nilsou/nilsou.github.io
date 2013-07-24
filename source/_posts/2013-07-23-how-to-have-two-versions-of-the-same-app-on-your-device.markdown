@@ -9,7 +9,9 @@ categories:
 - Appstore
 ---
 
-You have *v1* of your great app in the App Store, and therefore on all your devices. You are now starting to work on *v1.1*. The problem is that if you just bump the version number and keep building/provisioning with your current settings, when you install it on your device, it will replace the App Store version. I am going to explain how to get both the currently released version of your app and the development build you are working on on the same device easily. I am also explaining how to have 2 different icons for them so that you can tell them apart.
+You have *v1* of your great app in the App Store, and therefore on all your devices. You are now starting to work on *v1.1*. The problem is that if you just bump the version number and keep building/provisioning with your current settings, when you install it on your device, it will replace the App Store version.
+
+In this article, I am going to explain how to get both the currently released version of your app and the development build you are working on on the same device easily. I am also going to explain how to have 2 different icons for them so that you can tell them apart.
 
 <!--more-->
 

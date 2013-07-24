@@ -20,15 +20,34 @@ article.page{
 		}
 	}
 
+	.apps{
+		margin-left: auto ;
+  		margin-right: auto ;
+		max-width: 80%;
+		text-align: justified;
+//		background-color: red;
+	}
+
+	.app{
+		display: inline-block;
+		vertical-align: top;
+		text-align: center;
+		margin: 1.0em 3%;
+		width: 26%;
+//		background-color:green;
+
+		font-size: 0.8em;
+	}
+
 	img, video{
-			width: 8.0em;
+			width: 100%;
 			height: auto;
-			-webkit-border-radius:1.5em;
-			-moz-border-radius:1.5em;
-			border-radius:1.5em;
-			-webkit-border-radius:1.5em;
-			-moz-border-radius:1.5em;
-			border-radius:1.5em;
+			-webkit-border-radius:20%;
+			-moz-border-radius:20%;
+			border-radius:20%;
+			-webkit-border-radius:20%;
+			-moz-border-radius:20%;
+			border-radius:20%;
 			-webkit-box-shadow:0 0 15px rgba(0,0,0,0.35);
 			-moz-box-shadow:0 0 15px rgba(0,0,0,0.35);
 			box-shadow:0 0 15px rgba(0,0,0,0.35);
