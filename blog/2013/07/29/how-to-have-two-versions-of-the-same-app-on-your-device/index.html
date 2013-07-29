@@ -1,0 +1,197 @@
+
+<!DOCTYPE HTML>
+<html lang="en-GB">
+<head>
+	<meta charset="utf-8">
+	<title>How to have two versions of the same app on your device  | Nils Hayat</title>
+
+	<meta name="author" content="Nils Hayat">
+
+<meta name="description" content="Bits about iOS Development"> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Nils Hayat" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Nils Hayat</a></h1>
+<span class="tagline">iOS Development</span>
+<nav id="main-nav"><ul>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archives</a></li>
+	<li><a href="mailto:nilsou+blog@gmail.com">Contact</a></li>
+	<li><a href="http://twitter.com/nilsou">Twitter</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archives</a></li>
+	<li><a href="mailto:nilsou+blog@gmail.com">Contact</a></li>
+	<li><a href="http://twitter.com/nilsou">Twitter</a></li>
+</ul>
+</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<header>
+		<h2 class="title">How to Have Two Versions of the Same App on Your Device</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-29T07:59:00+03:00" pubdate data-updated="true">Jul 29<span>th</span>, 2013</time></div>
+	</header>
+	<div class="entry-content"><p>You have <em>v1</em> of your great app in the App Store, and therefore on all your devices. You are now starting to work on <em>v1.1</em>. The problem is that if you just bump the version number and keep building/provisioning with your current settings, when you install it on your device, it will replace the App Store version.</p>
+
+<p>In this article, I am going to explain how to get both the currently released version of your app and the development build you are working on the same device easily. I am also going to explain how to have 2 different icons for them so that you can tell them apart.</p>
+
+<!--more-->
+
+
+<h3>Create 2 different App IDs</h3>
+
+<p>When you install an App, in order to determine if you are trying to install a new app or to update an app already installed, the device compares their App IDs.</p>
+
+<p>So the first thing to do is to go in the provisioning center and create a second App ID for the development version of your app so that the device will be able to keep the two versions of your app.</p>
+
+<p>If your App Store app has the App ID <code>com.mycompany.myapp</code> I suggest you create <code>com.mycompany.myapp-beta</code> or <code>com.mycompany.myapp-dev</code>.</p>
+
+<p>While you&rsquo;re in there also create a provisioning profile for that new App ID.</p>
+
+<h3>Create a different icon for the development version</h3>
+
+<p>In order to differentiate the 2 versions when they are on my device, I use 2 different icons. The beta version has a black and yellow <em>work in progress</em> banner at the top left.</p>
+
+<p><img src="http://f.cl.ly/items/1g0n2k3i2Z2f1u10423F/Beta-next-to-release.jpg" alt="Beta next to release" /></p>
+
+<p>The first time I saw that technique used it was on a springboard screenshot of <a href="http://twitter.com/viticci">Federico Viticci</a>&rsquo;s phone where he had a development version of <a href="http://tapbots.com/software/tweetbot/">Tweetbot</a>.</p>
+
+<p>I created a PSD template to create those development icons, here it is: <a href="http://cl.ly/3x1Y0s0q2m3T/download/App%20Icon%20Beta%20Overlay.psd">App-icon-beta-overlay</a></p>
+
+<p>Name your icons <code>Icon.png</code>, <code>Icon@2x.png</code>, <code>Icon-beta.png</code> and <code>Icon-beta@2x.png</code>.</p>
+
+<h3>Have separate Build configurations</h3>
+
+<p>By default, Xcode creates 2 build configurations for you: <em>Debug</em> and <em>Release</em>. I like to add a third one, <em>AppStore</em>. I use them as follow:</p>
+
+<ul>
+<li>Debug: when I work and put the app on the device directly from Xcode.</li>
+<li>Release: When I package the app as an ipa + plist and put it on our Over-the-air distribution system. (Similar to test flight but much simpler)</li>
+<li>AppStore: I use this configuration when creating the builds that are submitted to the App Store.</li>
+</ul>
+
+
+<h3>Put it all together</h3>
+
+<h4>User-Defined build settings</h4>
+
+<p>Now we need to setup the project so tat it will use the correct App ID and icon for each configuration.</p>
+
+<p>To do so, go in your project&rsquo;s Build Settings and scroll all the way down. Add a User-defined setting that you call <code>BUNDLE_IDENTIFIER</code> and another one that you call <code>APP_ICON_NAME</code>. Set the values for each build configuration as in the following screenshot:</p>
+
+<p><img src="http://f.cl.ly/items/3v3T3W230B1v2K0M2m1c/Screen%20Shot%202013-07-23%20at%2011.12.16%20AM.png" alt="Project Settings screenshot" /></p>
+
+<p>Now we need to tell Xcode to use these settings when building your app</p>
+
+<h4>Info.plist</h4>
+
+<p>Open the info.plist file for your project (It&rsquo;s in Supporting files and is called MyApp-Info.plist).</p>
+
+<p>There under bundle identifier, replace the bundle identifier that you currently have with <code>${BUNDLE_IDENTIFIER}</code></p>
+
+<p>Also open the Icon files drop down and make sure the 2 options you have are <code>${APP_ICON_NAME}@2x.png</code> and <code>${APP_ICON_NAME}.png</code>.</p>
+
+<p>The <code>${…}</code> syntax is the pre-processor syntax: the first phase of any build starts with the pre-processor going over all the files and replacing these <code>${…}</code> with the values to what they are set.</p>
+
+<h3>Conclusion</h3>
+
+<p>This lets you with a project that will automatically use the beta App ID and icon when you are building for testing but that will also use the regular App ID and icon when you make a build for the App Store.</p>
+
+<p>Using pre-processor macros you can also access those settings from your code to set different parameters for different configurations.</p>
+
+<p>You can take it now step further and define more build configuration. Let&rsquo;s say your app connects to an API and you want some builds to point to the production server and some others to point to a development server, you can use this method to point them to the right URL and give them a different icon automatically!</p>
+</div>
+	
+
+</article>
+
+	
+	<div class="share">
+		<ul>
+			<li>
+  <a href="https://twitter.com/intent/tweet?text=How to have two versions of the same app on your device by @nilsou&url=http://nilsou.github.io/blog/2013/07/29/how-to-have-two-versions-of-the-same-app-on-your-device/" title="Share How to have two versions of the same app on your device on Twitter">
+    <img src="/images/social/twitter.png" />
+  </a>
+</li>
+
+			<!-- <li>
+  <a href="https://www.facebook.com/sharer.php?u=http://nilsou.github.io/blog/2013/07/29/how-to-have-two-versions-of-the-same-app-on-your-device/" title="Share How to have two versions of the same app on your device on Facebook">
+    <img src="/images/social/facebook.png" />
+  </a>
+</li>
+ -->
+			<!-- <li>
+  <a href="https://plus.google.com/share?url=http://nilsou.github.io/blog/2013/07/29/how-to-have-two-versions-of-the-same-app-on-your-device/" title="Share How to have two versions of the same app on your device on Google Plus">
+    <img src="/images/social/google.png" />
+  </a>
+</li>
+ -->
+		</ul>
+	</div>
+
+
+
+</div>
+	<footer id="footer" class="inner">&copy; 2013
+
+    Nils Hayat
+
+
+<a href="/atom.xml">RSS</a></footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/hyphenator.js"></script>
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-42610953-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+
+</body>
+</html>
