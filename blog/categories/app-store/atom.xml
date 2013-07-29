@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App Store | Nils Hayat]]></title>
   <link href="http://nilsou.github.io/blog/categories/app-store/atom.xml" rel="self"/>
   <link href="http://nilsou.github.io/"/>
-  <updated>2013-07-29T09:05:20+03:00</updated>
+  <updated>2013-07-29T11:29:56+03:00</updated>
   <id>http://nilsou.github.io/</id>
   <author>
     <name><![CDATA[Nils Hayat]]></name>
@@ -26,6 +26,8 @@
 
 
 <h3>Create 2 different App IDs</h3>
+
+<p><strong>Update:</strong> <em>You only need 2 different App IDs if you need to use things such as push notifications or iCloud. Otherwise you can use a wildcard profile with 2 different bundle IDs. Thanks <a href="http://twitter.com/alloy">@alloy</a> for the tip.</em></p>
 
 <p>When you install an App, in order to determine if you are trying to install a new app or to update an app already installed, the device compares their App IDs.</p>
 
