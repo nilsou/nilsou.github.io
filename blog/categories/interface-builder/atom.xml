@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Interface Builder | Nils Hayat]]></title>
   <link href="http://nilsou.github.io/blog/categories/interface-builder/atom.xml" rel="self"/>
   <link href="http://nilsou.github.io/"/>
-  <updated>2013-08-07T12:19:50+03:00</updated>
+  <updated>2013-08-07T12:24:52+03:00</updated>
   <id>http://nilsou.github.io/</id>
   <author>
     <name><![CDATA[Nils Hayat]]></name>
@@ -57,7 +57,7 @@
 
 <p><strong>103 lines!</strong> The old file had more than 10 times as many lines! Now this is what I call a drastic reduction.</p>
 
-<p>And look at it, it&rsquo;s actually <em>understandable</em>. The file now reflects the view hierarchy that you see in the left par of interface builder! With a little bit of practice you could even write that xml code. Ok, ok I am pushing it a little here.</p>
+<p>And look at it, it&rsquo;s actually <em>understandable</em>. The file now reflects the view hierarchy that you see in the left part of Interface Builder! With a little bit of practice you could even write that xml code. Ok, ok I am pushing it a little here.</p>
 
 <p>On top of that, the code generated seems to be deterministic now. This means that with the same user interface in input it will generate the same xib file. This makes manual merging much easier if it is needed.</p>
 
@@ -67,7 +67,7 @@
 
 <p>Now if someone tells you that they don&rsquo;t want to use xib files, send them to this article, I don&rsquo;t think there are many reasons left not to use them.</p>
 
-<p>This is not the only improvement that Xcode 5 brings to Interface Builder, for example, setting auto-layout constraints is now awesome when it was a pain before and if you tried setting constraints in code you know that it is not a viable alternative.</p>
+<p>This is not the only improvement that Xcode 5 brings to Interface Builder, for example, setting auto-layout constraints is now awesome whereas it was a pain before. If you have tried setting constraints in code you know that it is not a walk in the park.</p>
 
 <p>Let me know what you think on <a href="http://twitter.com/nilsou">twitter</a>!</p>
 ]]></content>
