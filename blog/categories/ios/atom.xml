@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS | Nils Hayat]]></title>
   <link href="http://nilsou.github.io/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://nilsou.github.io/"/>
-  <updated>2013-08-07T12:13:54+03:00</updated>
+  <updated>2013-08-07T12:19:50+03:00</updated>
   <id>http://nilsou.github.io/</id>
   <author>
     <name><![CDATA[Nils Hayat]]></name>
@@ -43,7 +43,7 @@
 
 <p>Try to make sense of the file, it&rsquo;s not intelligible at least not easily. This is the main reason why people don&rsquo;t like xib files and <a href="http://sam.roon.io/why-i-dont-use-interface-builder">don&rsquo;t use interface builder</a>.</p>
 
-<p>It gets worse: the format is non-determinist. Meaning that if you and I create exactly the same UI in Interface builder, we might (will) not have the same file content. This use to make xib files very difficult or even impossible to merge. This is the other big reason for people not to use xib files.</p>
+<p>It gets worse: the format is non-deterministic. Meaning that if you and I create exactly the same UI in Interface builder, we might (will) not have the same file content. This use to make xib files very difficult or even impossible to merge. This is the other big reason for people not to use xib files.</p>
 
 <h3>Xcode 5 xib format</h3>
 
