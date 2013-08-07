@@ -49,7 +49,7 @@ I clicked *Upgrade* and then opened the xib file as source code again to see wha
 
 **103 lines!** The old file had more than 10 times as many lines! Now this is what I call a drastic reduction.
 
-And look at it, it's actually *understandable*. The file now reflects the view hierarchy that you see in the left par of interface builder! With a little bit of practice you could even write that xml code. Ok, ok I am pushing it a little here.
+And look at it, it's actually *understandable*. The file now reflects the view hierarchy that you see in the left part of Interface Builder! With a little bit of practice you could even write that xml code. Ok, ok I am pushing it a little here.
 
 On top of that, the code generated seems to be deterministic now. This means that with the same user interface in input it will generate the same xib file. This makes manual merging much easier if it is needed.
 
@@ -59,6 +59,6 @@ The best part is that this new file format is not only understandable by humans 
 
 Now if someone tells you that they don't want to use xib files, send them to this article, I don't think there are many reasons left not to use them.
 
-This is not the only improvement that Xcode 5 brings to Interface Builder, for example, setting auto-layout constraints is now awesome when it was a pain before and if you tried setting constraints in code you know that it is not a viable alternative.
+This is not the only improvement that Xcode 5 brings to Interface Builder, for example, setting auto-layout constraints is now awesome whereas it was a pain before. If you have tried setting constraints in code you know that it is not a walk in the park.
 
 Let me know what you think on [twitter](http://twitter.com/nilsou)!
