@@ -36,7 +36,7 @@ You want the project file to reflect the organization of the project folder:
 Here the class I want to share is `NHAlignmentLayout` the rest of the files are there to demonstrate how to use it.
 
 #### Include a README
-Right an explicit readme with code samples and even screenshots, that will be the homepage for your repo and will likely be the decisive point for if someone who comes to your project will end up using it or not.
+Write an explicit readme with code samples and even screenshots, that will be the homepage for your repo and will likely be the decisive point for if someone who comes to your project will end up using it or not.
 Include explicit instructions on how to install you classes (Most likely using [CocoaPods](http://cocoapods.org).
 
 #### Include a LICENSE
