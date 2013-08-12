@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Colors | Nils Hayat]]></title>
-  <link href="http://nilsou.github.io/blog/categories/colors/atom.xml" rel="self"/>
-  <link href="http://nilsou.github.io/"/>
-  <updated>2013-08-08T17:46:29+03:00</updated>
-  <id>http://nilsou.github.io/</id>
+  <link href="http://nilsou.com/blog/categories/colors/atom.xml" rel="self"/>
+  <link href="http://nilsou.com/"/>
+  <updated>2013-08-12T10:13:42-04:00</updated>
+  <id>http://nilsou.com/</id>
   <author>
     <name><![CDATA[Nils Hayat]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to turn a PNG Sequence into a video with the correct colors for the iPad]]></title>
-    <link href="http://nilsou.github.io/blog/2013/01/10/how-to-turn-a-png-sequence-into-a-video-with-the-correct-colors-for-the-ipad/"/>
-    <updated>2013-01-10T08:33:00+02:00</updated>
-    <id>http://nilsou.github.io/blog/2013/01/10/how-to-turn-a-png-sequence-into-a-video-with-the-correct-colors-for-the-ipad</id>
+    <link href="http://nilsou.com/blog/2013/01/10/how-to-turn-a-png-sequence-into-a-video-with-the-correct-colors-for-the-ipad/"/>
+    <updated>2013-01-10T08:33:00-05:00</updated>
+    <id>http://nilsou.com/blog/2013/01/10/how-to-turn-a-png-sequence-into-a-video-with-the-correct-colors-for-the-ipad</id>
     <content type="html"><![CDATA[<p>A few days ago, I was asked to embed videos in an iPad app and to have the video player be &ldquo;invisible&rdquo; to the user. This means that we extracted the part of the background for the view where the video would go and used it as the background for creating the video (in After Effects). Everything looked great and I had a perfectly invisible experience in the simulator.</p>
 
 <p>Then I decided to test on an actual iPad. This is when I realized that the videos looked completely different from the background. I had a color management problem. We tried every export settings we could find in After Effects, nothing would work.</p>

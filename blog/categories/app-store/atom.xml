@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: App Store | Nils Hayat]]></title>
-  <link href="http://nilsou.github.io/blog/categories/app-store/atom.xml" rel="self"/>
-  <link href="http://nilsou.github.io/"/>
-  <updated>2013-08-08T17:46:29+03:00</updated>
-  <id>http://nilsou.github.io/</id>
+  <link href="http://nilsou.com/blog/categories/app-store/atom.xml" rel="self"/>
+  <link href="http://nilsou.com/"/>
+  <updated>2013-08-12T10:13:42-04:00</updated>
+  <id>http://nilsou.com/</id>
   <author>
     <name><![CDATA[Nils Hayat]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to have two versions of the same app on your device]]></title>
-    <link href="http://nilsou.github.io/blog/2013/07/29/how-to-have-two-versions-of-the-same-app-on-your-device/"/>
-    <updated>2013-07-29T07:59:00+03:00</updated>
-    <id>http://nilsou.github.io/blog/2013/07/29/how-to-have-two-versions-of-the-same-app-on-your-device</id>
+    <link href="http://nilsou.com/blog/2013/07/29/how-to-have-two-versions-of-the-same-app-on-your-device/"/>
+    <updated>2013-07-29T07:59:00-04:00</updated>
+    <id>http://nilsou.com/blog/2013/07/29/how-to-have-two-versions-of-the-same-app-on-your-device</id>
     <content type="html"><![CDATA[<p>You have <em>v1</em> of your great app in the App Store, and therefore on all your devices. You are now starting to work on <em>v1.1</em>. The problem is that if you just bump the version number and keep building/provisioning with your current settings, when you install it on your device, it will replace the App Store version.</p>
 
 <p>In this article, I am going to explain how to get both the currently released version of your app and the development build you are working on the same device easily. I am also going to explain how to have 2 different icons for them so that you can tell them apart.</p>

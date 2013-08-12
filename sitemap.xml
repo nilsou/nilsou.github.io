@@ -2,52 +2,52 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>
-            http://nilsou.github.io/blog/2013/01/10/how-to-turn-a-png-sequence-into-a-video-with-the-correct-colors-for-the-ipad/
+            http://nilsou.com/blog/2013/01/10/how-to-turn-a-png-sequence-into-a-video-with-the-correct-colors-for-the-ipad/
         </loc>
-        <lastmod>2013-07-15T07:01:57+03:00</lastmod>
+        <lastmod>2013-07-15T00:01:57-04:00</lastmod>
     </url>
     <url>
-        <loc>http://nilsou.github.io/blog/2013/07/21/how-to-open-source-objective-c-code/</loc>
-        <lastmod>2013-08-08T17:45:59+03:00</lastmod>
+        <loc>http://nilsou.com/blog/2013/07/21/how-to-open-source-objective-c-code/</loc>
+        <lastmod>2013-08-08T10:45:59-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://nilsou.github.io/blog/2013/07/29/how-to-have-two-versions-of-the-same-app-on-your-device/
+            http://nilsou.com/blog/2013/07/29/how-to-have-two-versions-of-the-same-app-on-your-device/
         </loc>
-        <lastmod>2013-07-29T11:27:52+03:00</lastmod>
+        <lastmod>2013-07-29T04:27:52-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://nilsou.github.io/blog/2013/08/07/xcode-5-finally-makes-interface-builder-a-viable-option-for-teams/
+            http://nilsou.com/blog/2013/08/07/xcode-5-finally-makes-interface-builder-a-viable-option-for-teams/
         </loc>
-        <lastmod>2013-08-07T12:24:37+03:00</lastmod>
+        <lastmod>2013-08-07T05:24:37-04:00</lastmod>
     </url>
     <url>
-        <loc>http://nilsou.github.io/about/</loc>
-        <lastmod>2013-08-07T12:28:14+03:00</lastmod>
+        <loc>http://nilsou.com/about/</loc>
+        <lastmod>2013-08-07T05:28:14-04:00</lastmod>
     </url>
     <url>
-        <loc>http://nilsou.github.io/archives/</loc>
-        <lastmod>2013-08-08T17:45:59+03:00</lastmod>
+        <loc>http://nilsou.com/archives/</loc>
+        <lastmod>2013-08-08T10:45:59-04:00</lastmod>
     </url>
     <url>
-        <loc>http://nilsou.github.io/blog/archives/</loc>
-        <lastmod>2013-08-08T17:45:59+03:00</lastmod>
+        <loc>http://nilsou.com/blog/archives/</loc>
+        <lastmod>2013-08-08T10:45:59-04:00</lastmod>
     </url>
     <url>
-        <loc>http://nilsou.github.io/blog/</loc>
-        <lastmod>2013-08-08T17:45:59+03:00</lastmod>
+        <loc>http://nilsou.com/blog/</loc>
+        <lastmod>2013-08-08T10:45:59-04:00</lastmod>
     </url>
     <url>
-        <loc>http://nilsou.github.io/</loc>
-        <lastmod>2013-08-08T17:45:59+03:00</lastmod>
+        <loc>http://nilsou.com/</loc>
+        <lastmod>2013-08-08T10:45:59-04:00</lastmod>
     </url>
     <url>
-        <loc>http://nilsou.github.io/projects/</loc>
-        <lastmod>2013-08-08T17:45:59+03:00</lastmod>
+        <loc>http://nilsou.com/projects/</loc>
+        <lastmod>2013-08-08T10:45:59-04:00</lastmod>
     </url>
     <url>
-        <loc>http://nilsou.github.io/robots.txt</loc>
-        <lastmod>2013-07-15T07:01:58+03:00</lastmod>
+        <loc>http://nilsou.com/robots.txt</loc>
+        <lastmod>2013-07-15T00:01:58-04:00</lastmod>
     </url>
 </urlset>

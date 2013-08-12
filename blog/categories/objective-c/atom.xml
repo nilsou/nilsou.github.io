@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Objective-C | Nils Hayat]]></title>
-  <link href="http://nilsou.github.io/blog/categories/objective-c/atom.xml" rel="self"/>
-  <link href="http://nilsou.github.io/"/>
-  <updated>2013-08-08T17:46:29+03:00</updated>
-  <id>http://nilsou.github.io/</id>
+  <link href="http://nilsou.com/blog/categories/objective-c/atom.xml" rel="self"/>
+  <link href="http://nilsou.com/"/>
+  <updated>2013-08-12T10:13:42-04:00</updated>
+  <id>http://nilsou.com/</id>
   <author>
     <name><![CDATA[Nils Hayat]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Open source Objective-C code with Github and CocoaPods]]></title>
-    <link href="http://nilsou.github.io/blog/2013/07/21/how-to-open-source-objective-c-code/"/>
-    <updated>2013-07-21T16:33:00+03:00</updated>
-    <id>http://nilsou.github.io/blog/2013/07/21/how-to-open-source-objective-c-code</id>
+    <link href="http://nilsou.com/blog/2013/07/21/how-to-open-source-objective-c-code/"/>
+    <updated>2013-07-21T16:33:00-04:00</updated>
+    <id>http://nilsou.com/blog/2013/07/21/how-to-open-source-objective-c-code</id>
     <content type="html"><![CDATA[<p>Last week I decided to open source some classes that I have written and that I reuse often in apps so that other developers can benefit from them. This post has 3 parts: first I talk about how to format you code/project to make it useful to other developers. Then I explain how to put it on Github. And finally I describe what to do to make it available through <a href="http://cocoapods.org">CocoaPods</a>.</p>
 
 <!-- more -->
