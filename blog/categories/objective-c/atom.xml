@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Objective-C | Nils Hayat]]></title>
   <link href="http://nilsou.com/blog/categories/objective-c/atom.xml" rel="self"/>
   <link href="http://nilsou.com/"/>
-  <updated>2013-08-21T11:50:38-04:00</updated>
+  <updated>2013-08-21T12:43:32-04:00</updated>
   <id>http://nilsou.com/</id>
   <author>
     <name><![CDATA[Nils Hayat]]></name>
@@ -179,7 +179,7 @@ This modifier is called the block pointer modifier (or closure modifier as they 
 
 <p>is a <font color="66CCFF">block</font> <font color="FD9A00">that</font> <font color="9A9A9A">takes a long as an argument</font> <font color="FD9A00">returns a</font> <code><font color="722CFD">int</font></code>.</p>
 
-<p>This is how you where the syntax for block declarations comes from. Now you already know that there are other syntaxes that you need to remember in order to use blocks: the one used to define a block literal, and the one to pass the block to an Objective-C method.</p>
+<p>This is where the syntax for block declarations comes from. Now you already know that there are other syntaxes that you need to remember in order to use blocks: the one used to define a block literal, and the one to pass the block to an Objective-C method.</p>
 
 <h3>Abstract declarator</h3>
 
