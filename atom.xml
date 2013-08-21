@@ -4,13 +4,252 @@
   <title><![CDATA[Nils Hayat]]></title>
   <link href="http://nilsou.com/atom.xml" rel="self"/>
   <link href="http://nilsou.com/"/>
-  <updated>2013-08-12T17:54:17-04:00</updated>
+  <updated>2013-08-21T11:50:38-04:00</updated>
   <id>http://nilsou.com/</id>
   <author>
     <name><![CDATA[Nils Hayat]]></name>
     
   </author>
 
+  
+  <entry>
+    <title type="html"><![CDATA[From C declarators to Objective-C blocks syntax]]></title>
+    <link href="http://nilsou.com/blog/2013/08/21/objective-c-blocks-syntax/"/>
+    <updated>2013-08-21T11:30:00-04:00</updated>
+    <id>http://nilsou.com/blog/2013/08/21/objective-c-blocks-syntax</id>
+    <content type="html"><![CDATA[<p>In this post, I start with the simplest C declarator and build in complexity until we get to Objective-C blocks syntax. It took me a while to get block syntax but once you understand how it is organized and where it comes from, there is no looking in Google every time you need to declare a block anymore.</p>
+
+<p>If you want to be able to write block declarations from the top of your head, read-on!</p>
+
+<p>I strongly advise against reading this post in an RSS reader or read later service. It does heavy use of colors to explain things and these colors would not appear there.</p>
+
+<!-- more -->
+
+
+<h3>Declarators</h3>
+
+<p>Variables in C (and by extension Objective-C) are declared using declarators.</p>
+
+<p>A declarator has 2 roles:</p>
+
+<ul>
+<li>Specify the type of the variable (what the compiler should expect to find in that memory space)</li>
+<li>Give that variable a name to make it available to the appropriate scope.</li>
+</ul>
+
+
+<p>Let&rsquo;s start with the most basic declarator:</p>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> <font color="2E6FFD">a</font>;
+</pre>
+
+
+<p>This is most likely the first line of C code you have ever written.</p>
+
+<p><code><font color="722CFD">int</font></code> is a basic type and <code><font color="2E6FFD">a</font></code> is the variable name or identifier<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>.</p>
+
+<p>To read a declarator, you start from the identifier, then go right until you can&rsquo;t and then you start over from the left of the variable<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup> (we&rsquo;ll explain why in the next section).</p>
+
+<p>Here there is nothing to the right of our variable so it&rsquo;s straightforward: <code><font color="2E6FFD">a</font></code> is an <code><font color="722CFD">int</font></code>.</p>
+
+<p>A declaration can only have <em>1</em> basic type and it&rsquo;s the left most word of the declarator.</p>
+
+<p>Declarators can modify basic types using modifiers to create <em>derived types</em>. The 4 modifiers (3 from ANSI-C and one from <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1451.pdf">Apple&rsquo;s proposed extension</a>) are <code><font color="DD2067">*</font></code>, <code><font color="66B132">[]</font></code>, <code><font color="FD9A00">()</font></code> and <code><font color="66CCFF">^</font></code>.</p>
+
+<h4>The 3 ANSI-C modifiers</h4>
+
+<h5>The pointer modifier <code><font color="DD2067">*</font></code></h5>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> <font color="DD2067">*</font><font color="2E6FFD">a</font>;
+</pre>
+
+
+<p>The basic type is still int and the name of the variable <code><font color="2E6FFD">a</font></code>. But the pointer modifier <code><font color="DD2067">*</font></code> comes to tell us that <code><font color="2E6FFD">a</font></code> is a <font color="DD2067">pointer to</font> an <code><font color="722CFD">int</font></code> instead of an <code><font color="722CFD">int</font></code>.</p>
+
+<p>The <code><font color="DD2067">*</font></code> modifier is always to the left of the modified variable.</p>
+
+<h5>The array modifier <code><font color="66B132">[]</font></code></h5>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> <font color="2E6FFD">a</font><font color="66B132">[]</font>;
+</pre>
+
+
+<p>Here we see that the array modifier <code><font color="66B132">[]</font></code> comes to tell us that <code><font color="2E6FFD">a</font></code> is now <font color="66B132">an array of</font> <code><font color="722CFD">int</font></code>s instead of a simple <code><font color="722CFD">int</font></code>. This can be completed by the dimension of the array e.g. <code><font color="722CFD">int</font> <font color="2E6FFD">a</font><font color="66B132">[</font>10<font color="66B132">]</font>;</code>.</p>
+
+<p>The <code><font color="66B132">[]</font></code> modifier is always to the right of the modified variable.</p>
+
+<h5>The function modifier <code><font color="FD9A00">()</font></code></h5>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> <font color="2E6FFD">f</font><font color="FD9A00">()</font>;
+</pre>
+
+
+<p>The function modifier <code><font color="FD9A00">()</font></code> comes to tell us that <code><font color="2E6FFD">f</font></code> is <font color="FD9A00">a function that returns</font> an <code><font color="722CFD">int</font></code>. This modifier can also specify the arguments that the function takes e.g. <code><font color="722CFD">int</font> <font color="2E6FFD">f</font><font color="FD9A00">(</font><font color="9A9A9A">long</font><font color="FD9A00">)</font>;</code> is <font color="FD9A00">a function that</font>  <font color="9A9A9A">takes a long as an argument and</font> <font color="FD9A00">returns</font> an int.</p>
+
+<p>The <code><font color="FD9A00">()</font></code> modifier is always to the right of the modified variable.</p>
+
+<h4>Composing modifiers</h4>
+
+<h5>Pointers and arrays</h5>
+
+<p>Modifiers can be composed to create more complex variable types. Similarly to how arithmetic operations are ordered by precedence (* and / are executed before + and &ndash;), modifiers are too. <code><font color="66B132">[]</font></code> and <code><font color="FD9A00">()</font></code> have higher precedence over <code><font color="DD2067">*</font></code> (and <code><font color="66CCFF">^</font></code>).
+Since the 2 modifiers with higher precedence are written to the right of the variable, when reading complex declarator, <strong>you always start from the identifier and go right as long as possible</strong> then go left when you reach either the end of the declarator or a closing parenthesis.</p>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> <font color="DD2067">*</font><font color="2E6FFD">a</font><font color="66B132">[]</font>;
+</pre>
+
+
+<p>or as you can write it by adding parentheses to improve readability</p>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> <font color="DD2067">*</font>(<font color="2E6FFD">a</font><font color="66B132">[]</font>);
+</pre>
+
+
+<p>is <font color="66B132">an array of</font> pointers to an <code><font color="722CFD">int</font></code>.</p>
+
+<p>But you might ask, what if I want to have a pointer to an array of ints? Well since <code><font color="DD2067">*</font></code> has lower precedence than <code><font color="66B132">[]</font></code>, you need to use parenthesis to force that precedence.</p>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> (<font color="DD2067">*</font><font color="2E6FFD">a</font>)<font color="66B132">[]</font>;
+</pre>
+
+
+<p>Here, <code><font color="2E6FFD">a</font></code> is a <font color="DD2067">pointer to</font> <font color="66B132">an array of</font> <code><font color="722CFD">int</font></code>s.</p>
+
+<h5>Array and functions</h5>
+
+<p>You cannot have an array of functions and a function cannot return an array or a function<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>.
+A function can however take an array as an argument.</p>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> <font color="2E6FFD">f</font><font color="FD9A00">(</font><font color="722CFD">int</font> <font color="66B132">[</font>10<font color="66B132">]</font><font color="FD9A00">)</font>;
+</pre>
+
+
+<p>Here f is <font color="FD9A00">a function that </font> takes <font color="66B132">an array of</font> 10 <code><font color="722CFD">int</font></code>s as an argument and <font color="FD9A00">returns</font> an <code><font color="722CFD">int</font></code>.</p>
+
+<h5>Pointers and functions</h5>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> <font color="DD2067">*</font><font color="2E6FFD">f</font><font color="FD9A00">()</font>;
+<font color="722CFD">int</font> <font color="DD2067">*</font>(<font color="2E6FFD">f</font><font color="FD9A00">()</font>);
+</pre>
+
+
+<p>In both cases, <code><font color="2E6FFD">f</font></code> is <font color="FD9A00">a function that returns</font> a <font color="DD2067">pointer to</font> an <code><font color="722CFD">int</font></code>.</p>
+
+<p>What if you want a pointer to a function? Parentheses!</p>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> (<font color="DD2067">*</font><font color="2E6FFD">f</font>)<font color="FD9A00">()</font>
+</pre>
+
+
+<p><code><font color="2E6FFD">f</font></code> is a <font color="DD2067">pointer to</font> <font color="FD9A00">a function that returns</font> an <code><font color="722CFD">int</font></code>.</p>
+
+<h4>The block (or closure) pointer modifier <code><font color="66CCFF">^</font></code></h4>
+
+<p>Apple introduced a 4th modifier in its <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1451.pdf">proposed extension of the ANSI-C standard</a>: <code><font color="66CCFF">^</font></code>.
+This modifier is called the block pointer modifier (or closure modifier as they were originally called). Blocks are very similar to pointers for functions. You declare a block the same way you would declare a pointer to a function.</p>
+
+<p>The block pointer modifier can only be applied to a function (you cannot write <code><font color="722CFD">int</font> <font color="66CCFF">^</font><font color="2E6FFD">a</font>;</code> as this is not defined).</p>
+
+<p>This is the reason why <code><font color="722CFD">int</font> <font color="66CCFF">^</font><font color="2E6FFD">b</font><font color="FD9A00">()</font></code> is illegal and will cause a compiler error: If you read this declarator using the precedence rules, b would be a function that returns a block pointer to an int. There is no such thing and this is why <strong>when declaring a block you need to always put the caret and the identifier in parentheses</strong>.</p>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> (<font color="66CCFF">^</font><font color="2E6FFD">b</font>)<font color="FD9A00">()</font>
+</pre>
+
+
+<p><code><font color="2E6FFD">b</font></code> is a <font color="66CCFF">block pointer to</font> <font color="FD9A00">a function that returns</font> an <code><font color="722CFD">int</font></code> or as abbreviated a <font color="66CCFF">block</font>  <font color="FD9A00">that returns</font>  an  <code><font color="722CFD">int</font><font color="DD2067"></font></code>.</p>
+
+<p>You can of course specify the arguments that the block takes:</p>
+
+<pre align='center' style="font-size:1.5em; margin-bottom:1em;">
+<font color="722CFD">int</font> (<font color="66CCFF">^</font><font color="2E6FFD">b</font>)<font color="FD9A00">(</font><font color="9A9A9A">long</font><font color="FD9A00">)</font>
+</pre>
+
+
+<p>is a <font color="66CCFF">block</font> <font color="FD9A00">that</font> <font color="9A9A9A">takes a long as an argument</font> <font color="FD9A00">returns a</font> <code><font color="722CFD">int</font></code>.</p>
+
+<p>This is how you where the syntax for block declarations comes from. Now you already know that there are other syntaxes that you need to remember in order to use blocks: the one used to define a block literal, and the one to pass the block to an Objective-C method.</p>
+
+<h3>Abstract declarator</h3>
+
+<p>A declarator is made up of 2 things: an abstract declarator in which you insert the identifier.</p>
+
+<p>Abstract declarators are used in 3 cases in standard C:</p>
+
+<ul>
+<li><p>In casts: in <code>int *a; long *b = (long *) a;</code>, <code>(long *)</code> is an abstract declarator for a pointer to a <code>long</code>.</p></li>
+<li><p>As arguments of sizeof(): <code>malloc(sizeof(long *));</code></p></li>
+<li><p>When declaring argument types for a function: <code>int f(long *);</code></p></li>
+</ul>
+
+
+<p>Objective-C uses abstract declarators in one more place: when declaring arguments or return values for methods.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">long</span> <span class="o">**</span><span class="p">)</span><span class="nf">methodWithArgument:</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="nv">a</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here both <code>long **</code> and <code>int *</code> are abstract declarators.</p>
+
+<p>So in order to use blocks as arguments or return values for Objective-C methods, we need to find the abstract declarator for these blocks. This is achieved by taking the declarator and removing the identifier.</p>
+
+<p><code><font color="722CFD">int</font> (<font color="66CCFF">^</font><font color="2E6FFD">b</font>)<font color="FD9A00">()</font></code> becomes <code><font color="722CFD">int</font> (<font color="66CCFF">^</font>)<font color="FD9A00">()</font></code>  and <code><font color="722CFD">int</font> (<font color="66CCFF">^</font><font color="2E6FFD">b</font>)<font color="FD9A00">(</font><font color="9A9A9A">long</font><font color="FD9A00">)</font></code> becomes <code><font color="722CFD">int</font> (<font color="66CCFF">^</font>)<font color="FD9A00">(</font><font color="9A9A9A">long</font><font color="FD9A00">)</font></code>.</p>
+
+<p>example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">methodWithArgument:</span><span class="p">(</span><span class="kt">int</span><span class="p">(</span><span class="o">^</span><span class="p">)())</span><span class="nv">block</span><span class="p">;</span>
+</span><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">anotherMethodWithArgument:</span><span class="p">(</span><span class="kt">void</span><span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="kt">long</span> <span class="n">arg1</span><span class="p">))</span><span class="nv">block</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>While you don&rsquo;t have to name your block&rsquo;s arguments in these abstract declarators, it is a good idea to do it. It will give a good hint as to what the block expects as argument and Xcode autocomplete will make your life easier when using that method.</p>
+
+<h3>Block literals</h3>
+
+<p>When you write <code>int a = 2;</code>, <code>int a</code> is a declarator and <code>2</code> is a literal for an int.</p>
+
+<p>The caret <code>^</code> is also used as a unary operator to transform a function implementation into a block<sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup>. You don&rsquo;t need to specify the return type for the block (it is inferred from the return statement in that block) but you can.</p>
+
+<p>Since this is the implementation of that block, you need to name your arguments here.</p>
+
+<p>So for the block <code>int (^block)(long, long);</code>, a block literal would be:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr></pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">block</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">long</span> <span class="n">a</span><span class="p">,</span> <span class="kt">long</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Conclusion</h3>
+
+<p>As convoluted as it may seem, blocks syntax in Objective-C is built upon standard C syntax. A block in Objective-C is nothing more than a pointer to a function that captures its scope. Once you understand that and practice writing and reading a few blocks declaration, you&rsquo;ll find it much easier to apprehend.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>From <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf">ANSI-C draft</a> page 35: <em>&ldquo;An identiﬁer can denote an object; a function; a tag or a member of a structure, union, or enumeration; a typedef name; a label name; a macro name; or a macro parameter&rdquo;</em><a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:2">
+<p>Oddly enough, Microsoft, of all companies, has a good <a href="http://msdn.microsoft.com/en-us/library/1x82y1z4(v=vs.80).aspx">page</a> explaining the interpretation of complex declarators.<a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
+<li id="fn:3">
+<p>From <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf">ANSI-C draft</a> page 133: <em>&ldquo;A function declarator shall not specify a return type that is a function type or an array type.&rdquo;</em><a href="#fnref:3" rev="footnote">&#8617;</a></p></li>
+<li id="fn:4">
+<p>From <a href="http://clang.llvm.org/docs/BlockLanguageSpec.html#id5">Clang documentation</a>: <em>&ldquo;A Block literal expression produces a reference to a Block. It is introduced by the use of the ^ token as a unary operator.&rdquo;</em><a href="#fnref:4" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Xcode 5 finally makes Interface Builder a viable option for teams]]></title>
