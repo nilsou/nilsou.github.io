@@ -138,7 +138,7 @@ You can of course specify the arguments that the block takes:
 </pre>
 is a <font color="66CCFF">block</font> <font color="FD9A00">that</font> <font color="9A9A9A">takes a long as an argument</font> <font color="FD9A00">returns a</font> <code><font color="722CFD">int</font></code>.
 
-This is how you where the syntax for block declarations comes from. Now you already know that there are other syntaxes that you need to remember in order to use blocks: the one used to define a block literal, and the one to pass the block to an Objective-C method.
+This is where the syntax for block declarations comes from. Now you already know that there are other syntaxes that you need to remember in order to use blocks: the one used to define a block literal, and the one to pass the block to an Objective-C method.
 
 ### Abstract declarator
 A declarator is made up of 2 things: an abstract declarator in which you insert the identifier.
